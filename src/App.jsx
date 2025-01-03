@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
           }))
       );
 
-    // Place mines randomly
+      
     let minesPlaced = 0;
     while (minesPlaced < MINE_COUNT) {
       const x = Math.floor(Math.random() * GRID_SIZE);
@@ -30,8 +30,7 @@ const App = () => {
         minesPlaced++;
       }
     }
-
-    // Calculate neighbor mines
+    
     for (let i = 0; i < GRID_SIZE; i++) {
       for (let j = 0; j < GRID_SIZE; j++) {
         if (!board[i][j].isMine) {
@@ -60,7 +59,7 @@ const App = () => {
   };
 
   const [board, setBoard] = useState(createBoard());
-  const [gameStatus, setGameStatus] = useState("playing"); // 'playing', 'won', 'lost'
+  const [gameStatus, setGameStatus] = useState("playing");
 
   const revealCell = (x, y) => {
     if (
@@ -81,7 +80,8 @@ const App = () => {
         });
       });
     } else {
-      // Flood fill for empty cells
+     
+        
       const floodFill = (i, j) => {
         if (
           i < 0 ||
